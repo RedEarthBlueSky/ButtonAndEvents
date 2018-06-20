@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text, TouchableHighlight }
-  from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
 
 const heartIcon = require('./images/plain-heart.png');
 
-//  to keep the state of an object we create a class ClassName {
 class MainApp extends Component {
   state = {
     liked: false,
-  }
+  };
 
-  _onPressButton = () => {
+  _onPressBtn = () => {
     this.setState({
-      state: !this.state.liked,
+      liked: !this.state.liked,
     });
   }
 
-  //  define the content of the component inside render
   render() {
+    const likedStyles = this.state.liked ? styles.liked : null;
+    console.log(likedStyles)
     return (
       <View style={styles.container}>
         <TouchableHighlight
+          onPress={this._onPressBtn}
           style={styles.btn}
           underlayColor='#fefefe'
         >
-         <Image
-           source={heartIcon}
-           style={styles.icon}
-         />
+         <Image source={heartIcon} style={[styles.icon, likedStyles]} />
        </TouchableHighlight>
        <Text style={styles.text}> Do you like this app?</Text>
       </View>
@@ -37,8 +34,8 @@ class MainApp extends Component {
 
 const styles = StyleSheet.create({
   container: {
-  marginTop: 50,
-  alignItems: 'center',
+    marginTop: 50,
+    alignItems: 'center',
   },
   btn: {
     borderRadius: 5,
