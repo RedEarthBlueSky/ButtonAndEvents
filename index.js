@@ -1,4 +1,5 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
 
-AppRegistry.registerComponent('ButtonsAndEvents', () => App);
+import { AppRegistry } from 'react-native';
+import MainApp from './src/MainApp';
+
+AppRegistry.registerComponent('ButtonsAndEvents', () => MainApp);
